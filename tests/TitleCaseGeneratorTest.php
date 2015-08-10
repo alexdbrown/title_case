@@ -47,5 +47,46 @@
 
             $this->assertEquals("From Beowulf to the Hulk", $result);
         }
+
+        function test_makeTitleCase_nonLetterCharacters()
+        {
+            $test_TitleCaseGenerator = new titleCaseGenerator;
+            $input = "57 beowulf alternative endings!!";
+
+            $result = $test_TitleCaseGenerator->makeTitleCase($input);
+
+            $this->assertEquals("57 Beowulf Alternative Endings!!", $result);
+        }
+
+        function test_makeTitleCase_upperCaseEntries()
+        {
+            $test_TitleCaseGenerator = new titleCaseGenerator;
+            $input = "BEOWULF ON THE ROCKS";
+
+            $result = $test_TitleCaseGenerator->makeTitleCase($input);
+
+            $this->assertEquals("Beowulf on the Rocks", $result);
+        }
+
+        function test_makeTitleCase_mixedCaseEntries()
+        {
+            $test_TitleCaseGenerator = new titleCaseGenerator;
+            $input = "BeoWulf aNd mE";
+
+            $result = $test_TitleCaseGenerator->makeTitleCase($input);
+
+            $this->assertEquals("Beowulf and Me", $result);
+        }
+
+        function test_makeTitleCase_uniqueCaseEntries()
+        {
+            $test_TitleCaseGenerator = new titleCaseGenerator;
+            $input = "here's to beowulf and [McDuff] and [O'Malley]";
+
+            $result = $test_TitleCaseGenerator->makeTitleCase($input);
+
+            $this->assertEquals("Here's to Beowulf and McDuff and O'Malley", $result);
+        }
+
     }
 ?>
